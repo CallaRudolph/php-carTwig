@@ -6,7 +6,7 @@
 
 ## Description
 
-_This PHP exercise allows the user to enter a maximum price and mileage and displays a list of matching cars to purchase. _
+_This PHP exercise allows the user to enter a maximum price and mileage and displays a list of matching cars to purchase._
 
 ## Setup Requirements
 
