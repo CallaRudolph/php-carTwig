@@ -5,9 +5,9 @@
         private $price;
         private $miles;
         private $image;
-        function worthBuying($max_price)
+        function worthBuying($max_price, $max_mileage)
            {
-               return $this->price < ($max_price + 100);
+               return $this->price < ($max_price + 100) && $this->miles < ($max_mileage + 100);
            }
 
         function __construct($car_model, $car_price, $car_miles, $car_image)
@@ -81,7 +81,7 @@
 
     $cars_matching_search = array();
     foreach ($cars as $car) {
-        if ($car->worthBuying($_GET['price'])) {
+        if ($car->worthBuying($_GET['price'], $_GET['mileage'])) {
             array_push($cars_matching_search, $car);
         }
     }
@@ -95,17 +95,21 @@
     <h1>Your Car Dealership</h1>
     <ul>
         <?php
-            foreach ($cars_matching_search as $car) {
-                $matching_model = $car->getModel();
-                $matching_price = $car->getPrice();
-                $matching_miles = $car->getMiles();
-                $matching_image = $car->getImage();
-                echo "<li> $matching_model </li>";
-                echo "<ul>";
-                    echo "<li> $$matching_price </li>";
-                    echo "<li> Miles: $matching_miles </li>";
-                    echo "Pic: <img src=$matching_image>";
-                echo "</ul>";
+            if (empty($cars_matching_search)) {
+                echo "<h1>Increase your standards!</h1>";
+            } else {
+                foreach ($cars_matching_search as $car) {
+                    $matching_model = $car->getModel();
+                    $matching_price = $car->getPrice();
+                    $matching_miles = $car->getMiles();
+                    $matching_image = $car->getImage();
+                    echo "<li> $matching_model </li>";
+                    echo "<ul>";
+                        echo "<li> $$matching_price </li>";
+                        echo "<li> Miles: $matching_miles </li>";
+                        echo "Pic: <img src=$matching_image>";
+                    echo "</ul>";
+                }
             }
         ?>
     </ul>
