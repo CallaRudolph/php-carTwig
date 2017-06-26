@@ -33,7 +33,7 @@
             $float_price = (float) $new_price;
             if ($float_price != 0) {
               $formatted_price = number_format($float_price, 2);
-              $this->price = $float_price;
+              $this->price = $formatted_price;
             }
         }
 
@@ -47,7 +47,7 @@
             $float_miles = (float) $new_miles;
             if ($float_miles != 0) {
               $formatted_miles = number_format($float_miles, 2);
-              $this->miles = $float_miles;
+              $this->miles = $formatted_miles;
             }
         }
 
@@ -73,8 +73,8 @@
     $mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "images/mercedes1.jpeg");
 
     $porsche->setModel("2013 Porsche");
-    $ford->setPrice(15000);
-    $lexus->setMiles(40000);
+    $ford->setPrice(15000.39218);
+    $lexus->setMiles(40000.9432);
     $mercedes->setImage("images/mercedes2.jpeg");
 
     $cars = array($porsche, $ford, $lexus, $mercedes);
