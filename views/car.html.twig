@@ -1,11 +1,23 @@
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <title>Cars</title>
 </head>
 <body>
     <div class="container">
+        <h1>Buy one of these!</h1>
+        {% if cars is not empty %}
+            <ul>
+                {% for car in cars %}
+                    <li>{{ car.getModel }}</li>
+                    <li>{{ car.getPrice }}</li>
+                    <li>{{ car.getMiles }}</li>
+                    <li><img src='{{ car.getImage }}' width='120px'></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <h1>Sell your clunker!</h1>
-        <form action="/" method="post">
+        <form action="/create" method="post">
             <div class="form-group">
                 <label for="make-model">What kinda car?</label>
                 <input type="text" name="make-model" id="make-model">
