@@ -25,5 +25,10 @@
         return $app['twig']->render('create_car.html.twig', array('newcar' => $car));
     });
 
+    $app->post("/delete", function() use ($app) {
+        Car::deleteAll();
+        return $app['twig']->render('delete_car.html.twig');
+    });
+    
     return $app;
 ?>

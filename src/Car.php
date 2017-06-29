@@ -64,6 +64,11 @@
         {
             return $_SESSION['list_of_cars'];
         }
+
+        static function deleteAll()
+        {
+            return $_SESSION['list_of_cars'] = array();
+        }
     }
 
     ?>
